@@ -1,6 +1,8 @@
-<template>
-    <div>
-        <p class="font-bold text-xl">Akam</p>
-    </div>
-</template>
+<script setup>
+import Navbar from "./layout/Navbar.vue";
+</script>
 
+<template>
+    <Navbar />
+    <div>Navbar</div>
+</template>

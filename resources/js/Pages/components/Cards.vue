@@ -1,18 +1,16 @@
 <template>
     <div class="p-5 my-10">
-        <p class="text-3xl text-center text-slate-700 mb-5 font-bold">
+        <!-- <p class="text-3xl text-center text-slate-700 mb-5 font-bold">
             Be a Business Partner
-        </p>
-        <div class="flex overflow-auto snap-x">
-            <router-link
-                to="/bepartner-page"
-                v-for="(i, index) in 3"
+        </p> -->
+        <div class="grid md:grid-cols-4">
+            <a
+                href="/bepartner-page"
+                v-for="(i, index) in 6"
                 :key="index"
-                class="m-5 rounded-lg min-w-[75%] snap-start hover:shadow-3xl duration-300 md:min-w-[25%]"
+                class="m-5 rounded-lg hover:shadow-3xl duration-300"
             >
-                <article
-                    class="overflow-hidden rounded-lg border border-gray-100 shadow-sm"
-                >
+                <article class="rounded-lg border border-gray-100 shadow-sm">
                     <img
                         alt="Office"
                         src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
@@ -50,14 +48,7 @@
                         </a>
                     </div>
                 </article>
-            </router-link>
+            </a>
         </div>
     </div>
-    <!--
-  This component uses @tailwindcss/line-clamp
-
-  yarn add @tailwindcss/line-clamp
-  npm install @tailwindcss/line-clamp
-
-  plugins: [require('@tailwindcss/line-clamp')]
---></template>
+</template>

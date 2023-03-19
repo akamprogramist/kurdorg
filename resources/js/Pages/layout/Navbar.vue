@@ -19,7 +19,7 @@
             >
             </span>
             <ul
-                class="absolute z-50 bg-blue-900 mt-2 md:mt-0 md:bg-white md:flex md:items-center md:px-0 px-5 md:pb-0 md:static md:w-auto w-full top-[75px] duration-500 ease-in"
+                class="absolute z-50 bg-redsh mt-2 md:mt-0 md:bg-white md:flex md:items-center md:px-0 px-5 md:pb-0 md:static md:w-auto w-full top-[75px] duration-500 ease-in"
                 :class="[open ? 'left-0' : 'left-[-100%]']"
             >
                 <li
@@ -28,7 +28,7 @@
                 >
                     <a
                         :href="link.link"
-                        class="text-white md:text-gray-500 hover:text-black duration-150"
+                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
                         >{{ link.name }}</a
                     >
                 </li>

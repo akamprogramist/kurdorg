@@ -1,5 +1,5 @@
 <template>
-    <div class="relative m-5 space-y-5">
+    <div class="m-5 space-y-5">
         <!-- <button
                 v-if="isOpen"
                 @click="isOpen = false"
@@ -38,43 +38,38 @@
                 </button>
             </div> -->
         <div
-            class="list-none overflow-auto snap-x pb-5 text-gray-500 font-semibold"
+            class="list-none overflow-auto snap-x pb-2 text-gray-500 font-semibold"
         >
-            <div class="flex min-w-max capitalize space-x-5">
+            <div class="flex min-w-max capitalize">
                 <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
                 >
                     All
                 </li>
                 <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
-                >
-                    women
-                </li>
-                <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
-                >
-                    Agriculture
-                </li>
-                <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
                 >
                     technology
                 </li>
                 <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
                 >
-                    education
+                    women
                 </li>
                 <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
-                >
-                    health
-                </li>
-                <li
-                    class="hover:text-black hover:underline underline-offset-8 cursor-pointer duration-150 active:text-blue-600"
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
                 >
                     arts
+                </li>
+                <li
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
+                >
+                    agriculture
+                </li>
+                <li
+                    class="hover:bg-gray-100 px-5 py-1.5 rounded-lg cursor-pointer duration-150 active:text-white active:bg-black"
+                >
+                    education
                 </li>
             </div>
         </div>

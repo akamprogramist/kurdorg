@@ -42,10 +42,10 @@ import { ref } from "vue";
 let open = ref(false);
 let links = [
     { name: "Home", link: "#" },
-    { name: "Organizations", link: "#" },
-    { name: "Volunteers", link: "#" },
-    { name: "Contact", link: "#" },
-    { name: "About us", link: "#" },
+    { name: "Local NGOs", link: "#" },
+    { name: "International NGOs", link: "#" },
+    { name: "Opportunities", link: "#" },
+    { name: "Call for proposals", link: "#" },
 ];
 
 function MenuOpen() {

@@ -1,8 +1,9 @@
 <script setup>
-import Landing from "./components/Landing.vue";
+import Landing from "./layout/Landing.vue";
 import Navbar from "./layout/Navbar.vue";
 import Filter from "./components/Filter.vue";
 import Cards from "./components/Cards.vue";
+import Footer from "./components/footer.vue";
 </script>
 
 <template>
@@ -10,4 +11,5 @@ import Cards from "./components/Cards.vue";
     <Landing />
     <Filter />
     <Cards />
+    <Footer />
 </template>

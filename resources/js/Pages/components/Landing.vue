@@ -19,7 +19,9 @@
                 <div
                     class="grid w-fit space-y-2 md:space-y-0 md:flex md:space-x-5"
                 >
-                    <Button class="py-3 px-8 hover:bg-redsh md:py-4 md:px-12">
+                    <Button
+                        class="py-3 px-8 bg-yellowsh hover:bg-redsh md:py-4 md:px-12"
+                    >
                         discover more</Button
                     >
                     <Button class="py-3 px-8 bg-redsh hover:bg-yellowsh">

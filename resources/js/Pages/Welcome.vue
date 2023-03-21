@@ -1,14 +1,14 @@
 <script setup>
-import Landing from "./layout/Landing.vue";
 import Navbar from "./layout/Navbar.vue";
 import Filter from "./components/Filter.vue";
 import Cards from "./components/Cards.vue";
 import Footer from "./components/footer.vue";
+import Carousel from "./components/Carousel.vue";
 </script>
 
 <template>
     <Navbar />
-    <Landing />
+    <Carousel />
     <Filter />
     <Cards />
     <Footer />

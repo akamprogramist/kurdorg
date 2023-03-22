@@ -41,11 +41,11 @@
 import { ref } from "vue";
 let open = ref(false);
 let links = [
-    { name: "Home", link: "#" },
-    { name: "Local NGOs", link: "#" },
-    { name: "International NGOs", link: "#" },
-    { name: "Opportunities", link: "#" },
-    { name: "Call for proposals", link: "#" },
+    { name: "Home", link: "/" },
+    { name: "Local NGOs", link: "/localNGOs" },
+    { name: "International NGOs", link: "/internationalNGOs" },
+    { name: "Opportunities", link: "/opportunities" },
+    { name: "Call for proposals", link: "/callforproposals" },
 ];
 
 function MenuOpen() {

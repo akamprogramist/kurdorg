@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return Inertia::render('Welcome');
 });
+Route::get('/localNGOs', function () {
+    return Inertia::render('localNGOs');
+});

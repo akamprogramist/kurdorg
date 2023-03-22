@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* vue3-carousel styles override */
+:root {
+    /* Color */
+    --vc-clr-primary: #ffffff;
+    --vc-clr-secondary: #ffffff7f;
+    --vc-clr-white: #ffffff;
+
+    /* Icon */
+    --vc-icn-width: 1.2em;
+
+    /* Navigation */
+    --vc-nav-width: 30px;
+    --vc-nav-height: 30px;
+    --vc-nav-border-radius: 0;
+    --vc-nav-color: var(--vc-clr-primary);
+    --vc-nav-color-hover: var(--vc-clr-secondary);
+    --vc-nav-background: transparent;
+
+    /* Pagination */
+    --vc-pgn-width: 10px;
+    --vc-pgn-height: 10px;
+    --vc-pgn-margin: 4px;
+    --vc-pgn-border-radius: 50%;
+    --vc-pgn-background-color: var(--vc-clr-secondary);
+    --vc-pgn-active-color: var(--vc-clr-primary);
+}

@@ -1,5 +1,5 @@
 <template>
-    <div class="m-5 space-y-5">
+    <div class="my-5 space-y-5">
         <!-- <button
                 v-if="isOpen"
                 @click="isOpen = false"

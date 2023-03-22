@@ -1,14 +1,14 @@
 <template>
-    <div class="p-5 my-10">
+    <div class="py-5">
         <!-- <p class="text-3xl text-center text-slate-700 mb-5 font-bold">
             Be a Business Partner
         </p> -->
-        <div class="grid md:grid-cols-4">
+        <div class="grid md:grid-cols-4 gap-5">
             <a
                 href="/bepartner-page"
                 v-for="(i, index) in 6"
                 :key="index"
-                class="m-5 rounded-lg hover:shadow-3xl duration-300"
+                class=" rounded-lg hover:shadow-3xl duration-300"
             >
                 <article class="rounded-lg border border-gray-100 shadow-sm">
                     <img

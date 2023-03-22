@@ -1,15 +1,12 @@
 <script setup>
-import Navbar from "./layout/Navbar.vue";
-import Filter from "./components/Filter.vue";
-import Cards from "./components/Cards.vue";
-import Footer from "./components/footer.vue";
+import Layout from "./layout/Layout.vue";
 import Carousel from "./components/Carousel.vue";
+import Services from "./components/Services.vue";
 </script>
 
 <template>
-    <Navbar />
-    <Carousel />
-    <Filter />
-    <Cards />
-    <Footer />
+    <Layout>
+        <Carousel />
+        <Services />
+    </Layout>
 </template>

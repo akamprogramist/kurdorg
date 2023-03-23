@@ -37,7 +37,7 @@
                     online events
                 </button>
             </div> -->
-        <div
+        <!-- <div
             class="list-none overflow-auto snap-x pb-2 text-gray-500 font-semibold"
         >
             <div class="flex min-w-max capitalize">
@@ -72,7 +72,7 @@
                     education
                 </li>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script setup>

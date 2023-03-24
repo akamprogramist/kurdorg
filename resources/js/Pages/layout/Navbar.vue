@@ -46,6 +46,7 @@ let links = [
     { name: "International NGOs", link: "/internationalNGOs" },
     { name: "Opportunities", link: "/opportunities" },
     { name: "Call for proposals", link: "/call" },
+    { name: "News", link: "/news" },
 ];
 
 function MenuOpen() {

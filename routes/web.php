@@ -29,3 +29,6 @@ Route::get('/opportunities', function () {
 Route::get('/call', function () {
     return Inertia::render('call');
 });
+Route::get('/news', function () {
+    return Inertia::render('news');
+});

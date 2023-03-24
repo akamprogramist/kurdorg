@@ -20,3 +20,9 @@ Route::get('/', function () {
 Route::get('/localNGOs', function () {
     return Inertia::render('localNGOs');
 });
+Route::get('/internationalNGOs', function () {
+    return Inertia::render('internationalNGOs');
+});
+Route::get('/opportunities', function () {
+    return Inertia::render('opportunities');
+});

@@ -26,3 +26,6 @@ Route::get('/internationalNGOs', function () {
 Route::get('/opportunities', function () {
     return Inertia::render('opportunities');
 });
+Route::get('/call', function () {
+    return Inertia::render('call');
+});

@@ -6,7 +6,7 @@
         <div class="grid md:grid-cols-3 gap-6">
             <a
                 href="/bepartner-page"
-                v-for="(i, index) in 1"
+                v-for="(i, index) in 4"
                 :key="index"
                 class="rounded-lg hover:shadow-3xl duration-300"
             >
@@ -49,6 +49,12 @@
                     </div>
                 </article>
             </a>
+        </div>
+        <div class="flex justify-center">
+            <Button
+                class="mt-10 justify-center hover:bg-bluesh hover:opacity-70"
+                >see more</Button
+            >
         </div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import Button from "./Button.vue";
-defineProps({ international: Object });
+defineProps({ local: Object });
 </script>
 
 <template>
@@ -14,23 +14,21 @@ defineProps({ international: Object });
             src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
             class="rounded-t-lg h-56 w-full object-cover"
         />
-        <p>akam</p>
-        <div class="flex space-x-2 items-center">
-            <i class="fa-solid fa-location-dot mt-0.5"></i>
-            <p class="font-bold capitalize text-black">Erbil</p>
-        </div>
 
         <div class="p-4 sm:p-6">
             <a href="#">
                 <h3 class="text-2xl font-bold text-gray-900">
-                    {{ international.name }}
+                    {{ local.name }}
                 </h3>
             </a>
 
             <p class="my-4 text-sm leading-relaxed text-gray-500 line-clamp-3">
-                {{ international.description }}
+                {{ local.description }}
             </p>
-
+            <div class="flex space-x-2 items-center text-gray-500">
+                <i class="fa-solid fa-location-dot mt-0.5"></i>
+                <p class="font-bold capitalize">{{ local.location }}</p>
+            </div>
             <a
                 href="#"
                 class="group mt-6 flex gap-1 text-sm font-medium justify-between text-bluesh items-center"

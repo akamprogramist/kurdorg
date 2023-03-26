@@ -9,7 +9,7 @@
                     v-for="(international, index) in internationals"
                     :key="index"
                 >
-                    <Card :international="international" />
+                    <InternationalCard :international="international" />
                 </div>
             </div>
         </Container>
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import Card from "../components/InternationalCard.vue";
+import InternationalCard from "../components/InternationalCard.vue";
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
 defineProps({ internationals: Object });

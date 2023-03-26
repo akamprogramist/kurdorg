@@ -2,12 +2,12 @@
     <Layout>
         <Container>
             <Filter />
-            <Cards />
+            <Card />
         </Container>
     </Layout>
 </template>
 <script setup>
-import Cards from "./components/Cards.vue";
+import Card from "./components/InternationalCard.vue";
 import Filter from "./components/Filter.vue";
 import Container from "./layout/Container.vue";
 import Layout from "./layout/Layout.vue";

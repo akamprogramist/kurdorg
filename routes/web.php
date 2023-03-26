@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InternationalController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,7 @@ Route::get('/', function () {
 Route::get('/localNGOs', function () {
     return Inertia::render('localNGOs');
 });
-Route::get('/internationalNGOs', function () {
-    return Inertia::render('internationalNGOs');
-});
+Route::get('/internationalNGOs', [InternationalController::class, 'Index']);
 Route::get('/opportunities', function () {
     return Inertia::render('opportunities');
 });

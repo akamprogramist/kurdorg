@@ -41,7 +41,7 @@
             </div>
             <div class="">
                 <img src="../../../../storage/app/images/undraw.png" alt="" />
-                <div class="items-center mx-16 md:mx-40 space-y-5">
+                <!-- <div class="items-center mx-16 md:mx-40 space-y-5">
                     <div class="flex space-x-2 items-center">
                         <i class="fa-solid fa-location-dot"></i>
                         <p class="text-xl font-semibold capitalize">
@@ -56,7 +56,7 @@
                         <i class="fa-solid fa-mail"></i>
                         <p>@kurdorg</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </Container>

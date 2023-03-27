@@ -1,6 +1,13 @@
 <script setup>
 import Button from "./Button.vue";
+import { useForm } from "@inertiajs/vue3";
 defineProps({ local: Object });
+const form = useForm({});
+function destroy(id) {
+    if (confirm("Are you sure you want to delete this organization?")) {
+        form.delete(`/localNGOs/${id}`);
+    }
+}
 </script>
 
 <template>
@@ -37,6 +44,12 @@ defineProps({ local: Object });
                     class="bg-bluesh hover:bg-yellowsh text-base rounded-none py-2 px-6"
                 >
                     View More
+                </Button>
+                <Button
+                    @click="destroy(local.id)"
+                    class="bg-redsh text-base rounded-none py-2 px-6"
+                >
+                    Delete
                 </Button>
                 <i class="fa-regular fa-heart text-xl hover:text-yellowsh"></i>
             </a>

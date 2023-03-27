@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('localNGOs', [LocalController::class, 'Index'])->name('localNGOs');
 Route::get('localNGOs/create', [LocalController::class, 'create']);
 Route::post('localNGOs', [LocalController::class, 'store']);
-Route::delete('localNGOs/{local}', [LocalController::class, 'destroy'])->name('locals.destroy');
+Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 Route::get('/internationalNGOs', [InternationalController::class, 'Index']);
 Route::get('/opportunities', function () {
     return Inertia::render('opportunities');

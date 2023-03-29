@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Local;
-use Inertia\Response;
-use Inertia\Inertia;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
 
 class LocalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return Inertia::render('locals/Index', [
-            'locals' => Local::all()
+            'filters' => $request->all('search'),
+            'locals' => Local::latest()->filter($request->only('search'))->get()
         ]);
     }
     public function create()

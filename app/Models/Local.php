@@ -15,5 +15,13 @@ class Local extends Model
         if ($filters['search'] ?? false) {
             $query->where('name', 'like', '%' . request('search') . '%');
         }
+        $query->when($filters['location'] ?? false, function ($query, $location) {
+
+            if ($location === 'all') {
+                dd('akam');
+            } else {
+                $query->where('location', 'like', '%' . request('location') . '%');
+            }
+        });
     }
 }

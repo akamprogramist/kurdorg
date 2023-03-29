@@ -38,4 +38,10 @@ class LocalController extends Controller
         $local->delete();
         return to_route('localNGOs');
     }
+    public function show(Local $local)
+    {
+        return Inertia::render('locals/Show', [
+            'local' => $local
+        ]);
+    }
 }

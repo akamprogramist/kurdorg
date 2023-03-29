@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
-import { router } from "@inertiajs/vue3";
+import { router, Link } from "@inertiajs/vue3";
 import Pagination from "../components/Pagination.vue";
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
@@ -68,11 +68,11 @@ function getlocation() {
                         />
 
                         <div class="p-4 sm:p-6">
-                            <a href="#">
+                            <Link :href="`/localNGOs/${local.id}`">
                                 <h3 class="text-2xl font-bold text-gray-900">
                                     {{ local.name }}
                                 </h3>
-                            </a>
+                            </Link>
 
                             <p
                                 class="my-4 text-sm leading-relaxed text-gray-500 line-clamp-3"

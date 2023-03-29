@@ -25,20 +25,21 @@
                 <li
                     v-for="link in links"
                     class="text-lg font-semibold capitalize mx-6 my-5"
-                >
-                    <a
+                 >
+                    <Link
                         :href="link.link"
                         class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
-                        >{{ link.name }}</a
-                    >
+                        >{{ link.name }}
+                    </Link>
                 </li>
             </ul>
-        </div>
+        </div> 
     </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { Link } from "@inertiajs/vue3";
 let open = ref(false);
 let links = [
     { name: "Home", link: "/" },

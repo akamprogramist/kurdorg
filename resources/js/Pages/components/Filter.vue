@@ -26,7 +26,6 @@
     </div>
 </template>
 <script setup>
-import { ref } from "vue";
 const props = defineProps(["modelValue"]);
 const emit = defineEmits(["update:modelValue"]);
 </script>

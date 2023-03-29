@@ -11,8 +11,12 @@ class LocalController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('locals/Index', [
-            'filters' => $request->all('search'),
-            'locals' => Local::latest()->filter($request->only('search'))->get()
+            'locals' => Local::latest()->filter($request->only('search'))->paginate(6)->through(fn ($local) => [
+                'id' => $local->id,
+                'name' => $local->name,
+                'location' => $local->location,
+                'description' => $local->description
+            ])
         ]);
     }
     public function create()

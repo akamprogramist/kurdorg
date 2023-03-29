@@ -12,8 +12,8 @@ class Local extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where('name', 'like', '%' . $search . '%');
-        });
+        if ($filters['search'] ?? false) {
+            $query->where('name', 'like', '%' . request('search') . '%');
+        }
     }
 }

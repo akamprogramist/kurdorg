@@ -26,11 +26,15 @@ class LocalController extends Controller
     }
     public function store(Request $request)
     {
-        Local::create($request->validate([
+        $formFields = $request->validate([
             "name" => ['required'],
             'description' => ['required'],
             'location' => ['required'],
-        ]));
+        ]);
+        if ($request->hasFile('image')) {
+            $formFields['logo'] = $request->file('image')->store('images', 'public');
+        }
+        Local::create([$formFields]);
         return to_route('localNGOs');
     }
     public function destroy(Local $local)

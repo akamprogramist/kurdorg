@@ -16,7 +16,8 @@ class LocalController extends Controller
                 'id' => $local->id,
                 'name' => $local->name,
                 'location' => $local->location,
-                'description' => $local->description
+                'description' => $local->description,
+                'image' => ($local->image ? asset('storage/' . $local->image) : asset('/storage/images/no-image.jpg')),
             ])
         ]);
     }
@@ -31,10 +32,11 @@ class LocalController extends Controller
             'description' => ['required'],
             'location' => ['required'],
         ]);
+
         if ($request->hasFile('image')) {
-            $formFields['logo'] = $request->file('image')->store('images', 'public');
+            $formFields['image'] = $request->file('image')->store('images', 'public');
         }
-        Local::create([$formFields]);
+        Local::create($formFields);
         return to_route('localNGOs');
     }
     public function destroy(Local $local)

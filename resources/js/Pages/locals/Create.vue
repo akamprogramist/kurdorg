@@ -7,13 +7,13 @@ const form = useForm({
     image: null,
 });
 function submit() {
+    // router.post("/localNGOs", data, {
+    //     forceFormData: true,
+    // });
     form.post("/localNGOs", {
         onSuccess: () => form.reset(),
     });
 }
-// router.post("/localNGOs", data, {
-//     forceFormData: true,
-// });
 // form.defaults("image", "updated-default@example.com");
 </script>
 

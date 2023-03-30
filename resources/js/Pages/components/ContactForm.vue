@@ -40,7 +40,10 @@
                 </div>
             </div>
             <div class="">
-                <img src="../../../../storage/app/images/undraw.png" alt="" />
+                <img
+                    src="../../../../storage/app/public/images/undraw.png"
+                    alt=""
+                />
                 <!-- <div class="items-center mx-16 md:mx-40 space-y-5">
                     <div class="flex space-x-2 items-center">
                         <i class="fa-solid fa-location-dot"></i>

@@ -17,7 +17,7 @@ class LocalController extends Controller
                 'name' => $local->name,
                 'location' => $local->location,
                 'description' => $local->description,
-                'image' => ($local->image ? asset('storage/' . $local->image) : asset('/storage/images/no-image.jpg')),
+                'image' => $local->image ? asset('storage/' . $local->image) : asset('storage/images/no-image.jpg'),
             ])
         ]);
     }

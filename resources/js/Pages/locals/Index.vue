@@ -62,7 +62,11 @@ function getlocation() {
                     >
                         <img
                             alt="Office"
-                            :src="local.image"
+                            :src="`${
+                                local.image
+                                    ? `storage/${local.image}`
+                                    : `storage/images/no-image.jpg`
+                            }   `"
                             class="rounded-t-lg h-56 w-full object-cover"
                         />
 
@@ -91,16 +95,22 @@ function getlocation() {
                                 class="group mt-6 flex gap-1 text-sm font-medium justify-between text-bluesh items-center"
                             >
                                 <Button
-                                    class="bg-bluesh hover:bg-yellowsh text-base rounded-none py-2 px-6"
+                                    class="bg-blues hover:opacity-70 text-base rounded-none py-2 px-6"
                                 >
                                     View More
                                 </Button>
                                 <Button
                                     @click="destroy(local.id)"
-                                    class="bg-redsh text-base rounded-none py-2 px-6"
+                                    class="bg-redsh hover:opacity-70 text-base rounded-none py-2 px-6"
                                 >
                                     Delete
                                 </Button>
+                                <Link
+                                    :href="`/localNGOs/${local.id}/edit`"
+                                    class="bg-yellowsh text-white hover:opacity-70 text-base rounded-none py-2 px-6"
+                                >
+                                    Edit
+                                </Link>
                                 <i
                                     class="fa-regular fa-heart text-xl hover:text-yellowsh"
                                 ></i>

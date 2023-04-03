@@ -24,8 +24,10 @@ Route::get('/', function () {
 Route::get('localNGOs', [LocalController::class, 'index'])->name('localNGOs');
 Route::get('localNGOs/create', [LocalController::class, 'create']);
 Route::post('localNGOs', [LocalController::class, 'store']);
-Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 Route::get('localNGOs/{local}', [LocalController::class, 'show']);
+Route::get('localNGOs/{local}/edit', [LocalController::class, 'edit']);
+Route::post('localNGOs/{local}', [LocalController::class, 'update']);
+Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 
 
 

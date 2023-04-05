@@ -4,14 +4,15 @@ import Layout from "../layout/Layout.vue";
 import { useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-    username: null,
     email: null,
     password: null,
-    password_confirmation: null,
 });
 function submit() {
-    form.post("/users", {
+    form.post("/users/authenticate", {
         onSuccess: () => form.reset(),
+        onError: (errors) => {
+            errors.email;
+        },
     });
 }
 </script>
@@ -22,27 +23,11 @@ function submit() {
                 class="p-10 max-w-lg mx-auto my-24 bg-gray-50 border border-gray-200 rounded"
             >
                 <header class="text-center">
-                    <h2 class="text-2xl font-bold uppercase mb-1">Register</h2>
-                    <p class="mb-4">Create an account</p>
+                    <h2 class="text-2xl font-bold uppercase mb-1">Login</h2>
+                    <p class="mb-4">Login into your account</p>
                 </header>
 
                 <form @submit.prevent="submit">
-                    <div class="mb-6">
-                        <label for="username" class="inline-block text-lg mb-2">
-                            Username
-                        </label>
-                        <input
-                            v-model="form.username"
-                            type="text"
-                            id="username"
-                            class="border border-gray-200 rounded p-2 w-full"
-                            name="username"
-                        />
-                        <div v-if="form.errors.username">
-                            {{ form.errors.username }}
-                        </div>
-                    </div>
-
                     <div class="mb-6">
                         <label for="email" class="inline-block text-lg mb-2"
                             >Email</label
@@ -54,8 +39,8 @@ function submit() {
                             class="border border-gray-200 rounded p-2 w-full"
                             name="email"
                         />
-                        <div v-if="form.errors.email">
-                            {{ form.errors.email }}
+                        <div v-if="$page.props.flash.message">
+                            {{ $page.props.flash.message }}
                         </div>
                     </div>
 
@@ -70,28 +55,6 @@ function submit() {
                             class="border border-gray-200 rounded p-2 w-full"
                             name="password"
                         />
-                        <div v-if="form.errors.password">
-                            {{ form.errors.password }}
-                        </div>
-                    </div>
-
-                    <div class="mb-6">
-                        <label
-                            for="password_confirmation"
-                            class="inline-block text-lg mb-2"
-                        >
-                            Confirm Password
-                        </label>
-                        <input
-                            v-model="form.password_confirmation"
-                            id="password_confirmation"
-                            type="password"
-                            class="border border-gray-200 rounded p-2 w-full"
-                            name="password_confirmation"
-                        />
-                        <div v-if="form.errors.password_confirmation">
-                            {{ form.errors.password_confirmation }}
-                        </div>
                     </div>
 
                     <div class="mb-6">
@@ -99,14 +62,14 @@ function submit() {
                             type="submit"
                             class="bg-bluesh text-white rounded py-2 px-4 hover:opacity-75 duration-150"
                         >
-                            Sign Up
+                            Login
                         </button>
                     </div>
 
                     <div class="mt-8">
                         <p>
-                            Already have an account?
-                            <a href="/login" class="text-redsh">Login</a>
+                            Don't have an account?
+                            <a href="/register" class="text-redsh">Register</a>
                         </p>
                     </div>
                 </form>

@@ -34,6 +34,9 @@ Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
+Route::get('/login', [UserController::class, 'login']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::delete('/logout', [UserController::class, 'logout']);
 
 
 Route::get('/internationalNGOs', [InternationalController::class, 'Index']);

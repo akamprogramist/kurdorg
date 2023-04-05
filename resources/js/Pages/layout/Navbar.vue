@@ -5,6 +5,7 @@
         <div class="text-xl uppercase font-semibold">
             <p>kurdorg</p>
         </div>
+        <header v-if="user">You are {{ user.username }}</header>
         <div>
             <span @click="MenuOpen()" class="md:hidden cursor-pointer text-3xl">
                 <i
@@ -23,6 +24,7 @@
                 :class="[open ? 'left-0' : 'left-[-100%]']"
             >
                 <li
+                    v-if="!user"
                     v-for="link in links"
                     class="text-lg font-semibold capitalize mx-3 my-5"
                 >
@@ -32,14 +34,33 @@
                         >{{ link.name }}
                     </Link>
                 </li>
+
+                <div
+                    v-else
+                    class="text-lg font-semibold capitalize mx-3 my-5 space-x-3"
+                >
+                    <Link
+                        href="/logout"
+                        method="delete"
+                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                        >Logout
+                    </Link>
+                    <Link
+                        href="/localNGOs"
+                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                        >LocalNGOs
+                    </Link>
+                </div>
             </ul>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { Link } from "@inertiajs/vue3";
+import { ref, computed } from "vue";
+import { Link, usePage } from "@inertiajs/vue3";
+const user = computed(() => usePage().props.auth.user);
+
 let open = ref(false);
 let links = [
     { name: "Home", link: "/" },
@@ -51,7 +72,10 @@ let links = [
     { name: "Register", link: "/register" },
     { name: "Login", link: "/login" },
 ];
-
+let authlinks = [
+    { name: "Logout", link: "/logout" },
+    { name: "Local NGOs", link: "/localNGOs" },
+];
 function MenuOpen() {
     open.value = !open.value;
 }

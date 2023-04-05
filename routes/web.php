@@ -2,6 +2,7 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LocalController;
 use App\Http\Controllers\InternationalController;
 
@@ -21,6 +22,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('localNGOs', [LocalController::class, 'index'])->name('localNGOs');
 Route::get('localNGOs/create', [LocalController::class, 'create']);
 Route::post('localNGOs', [LocalController::class, 'store']);
@@ -29,6 +31,9 @@ Route::get('localNGOs/{local}/edit', [LocalController::class, 'edit']);
 Route::post('localNGOs/{local}', [LocalController::class, 'update']);
 Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 
+
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/users', [UserController::class, 'store']);
 
 
 Route::get('/internationalNGOs', [InternationalController::class, 'Index']);

@@ -24,8 +24,8 @@
             >
                 <li
                     v-for="link in links"
-                    class="text-lg font-semibold capitalize mx-6 my-5"
-                 >
+                    class="text-lg font-semibold capitalize mx-3 my-5"
+                >
                     <Link
                         :href="link.link"
                         class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
@@ -33,7 +33,7 @@
                     </Link>
                 </li>
             </ul>
-        </div> 
+        </div>
     </div>
 </template>
 
@@ -48,6 +48,8 @@ let links = [
     { name: "Opportunities", link: "/opportunities" },
     { name: "Call for proposals", link: "/call" },
     { name: "News", link: "/news" },
+    { name: "Register", link: "/register" },
+    { name: "Login", link: "/login" },
 ];
 
 function MenuOpen() {

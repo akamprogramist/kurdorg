@@ -34,13 +34,29 @@ function submit() {
                         >
                         <input
                             v-model="form.email"
+                            :error="form.errors.email"
                             id="email"
                             type="email"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="email"
                         />
-                        <div v-if="$page.props.flash.message">
-                            {{ $page.props.flash.message }}
+                        <div
+                            v-if="$page.props.flash.message"
+                            class="alert p-4 m-6 text-sm text-green-800 rounded-lg bg-green-50"
+                            role="alert"
+                        >
+                            <span class="font-medium">{{
+                                $page.props.flash.message
+                            }}</span>
+                        </div>
+                        <div
+                            v-if="form.errors.email"
+                            class="alert p-4 m-6 text-sm text-green-800 rounded-lg bg-green-50"
+                            role="alert"
+                        >
+                            <span class="font-medium">{{
+                                form.errors.email
+                            }}</span>
                         </div>
                     </div>
 
@@ -50,6 +66,7 @@ function submit() {
                         </label>
                         <input
                             v-model="form.password"
+                            :error="form.errors.password"
                             id="password"
                             type="password"
                             class="border border-gray-200 rounded p-2 w-full"

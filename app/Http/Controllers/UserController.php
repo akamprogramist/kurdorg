@@ -49,8 +49,8 @@ class UserController extends Controller
         ]);
         if (Auth::attempt($formFields)) {
             Request::session()->regenerate();
-            return redirect('/');
+            return redirect('/')->with('message', 'logged in successfully');
         }
-        return back()->withError(['email' => 'Invalid Credentials'])->onlyInput('email');
+        return back();
     }
 }

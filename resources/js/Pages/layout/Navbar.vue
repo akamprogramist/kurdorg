@@ -40,6 +40,11 @@
                     class="text-lg font-semibold capitalize mx-3 my-5 space-x-3"
                 >
                     <Link
+                        href="/dashboard"
+                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                        >Manage
+                    </Link>
+                    <Link
                         href="/logout"
                         method="delete"
                         as="button"
@@ -72,10 +77,6 @@ let links = [
     { name: "News", link: "/news" },
     { name: "Register", link: "/register" },
     { name: "Login", link: "/login" },
-];
-let authlinks = [
-    { name: "Logout", link: "/logout" },
-    { name: "Local NGOs", link: "/localNGOs" },
 ];
 function MenuOpen() {
     open.value = !open.value;

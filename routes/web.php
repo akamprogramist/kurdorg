@@ -19,7 +19,7 @@ use App\Http\Controllers\InternationalController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
-});
+})->name('home');
 
 
 
@@ -34,7 +34,7 @@ Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
 
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/logout', [UserController::class, 'logout']);
 

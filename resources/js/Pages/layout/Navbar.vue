@@ -42,6 +42,7 @@
                     <Link
                         href="/logout"
                         method="delete"
+                        as="button"
                         class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
                         >Logout
                     </Link>

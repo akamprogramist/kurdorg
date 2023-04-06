@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from "@inertiajs/vue3";
+
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
 import { useForm } from "@inertiajs/vue3";
@@ -8,12 +10,7 @@ const form = useForm({
     password: null,
 });
 function submit() {
-    form.post("/users/authenticate", {
-        onSuccess: () => form.reset(),
-        onError: (errors) => {
-            errors.email;
-        },
-    });
+    form.post("/users/authenticate");
 }
 </script>
 <template>
@@ -25,6 +22,9 @@ function submit() {
                 <header class="text-center">
                     <h2 class="text-2xl font-bold uppercase mb-1">Login</h2>
                     <p class="mb-4">Login into your account</p>
+                    <div class="text-red-500" v-if="form.errors.error">
+                        <span>{{ form.errors.error }}</span>
+                    </div>
                 </header>
 
                 <form @submit.prevent="submit">
@@ -34,29 +34,13 @@ function submit() {
                         >
                         <input
                             v-model="form.email"
-                            :error="form.errors.email"
                             id="email"
                             type="email"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="email"
                         />
-                        <div
-                            v-if="$page.props.flash.message"
-                            class="alert p-4 m-6 text-sm text-green-800 rounded-lg bg-green-50"
-                            role="alert"
-                        >
-                            <span class="font-medium">{{
-                                $page.props.flash.message
-                            }}</span>
-                        </div>
-                        <div
-                            v-if="form.errors.email"
-                            class="alert p-4 m-6 text-sm text-green-800 rounded-lg bg-green-50"
-                            role="alert"
-                        >
-                            <span class="font-medium">{{
-                                form.errors.email
-                            }}</span>
+                        <div class="text-red-500" v-if="form.errors.email">
+                            <span>{{ form.errors.email }}</span>
                         </div>
                     </div>
 
@@ -66,12 +50,14 @@ function submit() {
                         </label>
                         <input
                             v-model="form.password"
-                            :error="form.errors.password"
                             id="password"
                             type="password"
                             class="border border-gray-200 rounded p-2 w-full"
                             name="password"
                         />
+                        <div class="text-red-500" v-if="form.errors.password">
+                            <span>{{ form.errors.password }}</span>
+                        </div>
                     </div>
 
                     <div class="mb-6">
@@ -86,7 +72,9 @@ function submit() {
                     <div class="mt-8">
                         <p>
                             Don't have an account?
-                            <a href="/register" class="text-redsh">Register</a>
+                            <Link href="/register" class="text-redsh"
+                                >Register</Link
+                            >
                         </p>
                     </div>
                 </form>

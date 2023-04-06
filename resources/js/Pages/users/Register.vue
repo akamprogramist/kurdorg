@@ -1,4 +1,6 @@
 <script setup>
+import { Link } from "@inertiajs/vue3";
+
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
 import { useForm } from "@inertiajs/vue3";
@@ -106,7 +108,7 @@ function submit() {
                     <div class="mt-8">
                         <p>
                             Already have an account?
-                            <a href="/login" class="text-redsh">Login</a>
+                            <Link href="/login" class="text-redsh">Login</Link>
                         </p>
                     </div>
                 </form>

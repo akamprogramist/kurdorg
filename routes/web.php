@@ -38,6 +38,8 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
+Route::get('localNGOs/manage', [LocalController::class, 'index']);
+
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');
 })->middleware('auth');

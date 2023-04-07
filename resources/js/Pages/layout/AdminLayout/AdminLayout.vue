@@ -1,32 +1,87 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import Dropdown from "../../components/Dropdown.vue";
-
+let open = ref(false);
+function MenuOpen() {
+    open.value = !open.value;
+}
 const user = computed(() => usePage().props.auth.user);
 </script>
 <template>
-    <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <nav class="fixed top-0 w-full bg-white border-b border-gray-200">
+        <div class="px-3 py-3">
             <div class="flex items-center justify-between">
-                <Link href="/" class="flex px-5">
+                <div class="flex items-center ml-5 space-x-8">
                     <span
-                        class="text-xl font-semibold sm:text-2xl whitespace-nowrap"
-                        >Kurdorg</span
+                        @click="MenuOpen()"
+                        class="md:hidden cursor-pointer text-3xl"
                     >
-                </Link>
-                <button class="flex px-5 items-center">
-                    {{ user.username }}
-                    <i class="fa-solid fa-chevron-down ml-2 mt-0.5"></i>
-                </button>
+                        <i
+                            :class="[
+                                open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars',
+                            ]"
+                        ></i>
+                    </span>
+
+                    <span
+                        v-if="open"
+                        @click="MenuOpen()"
+                        class="fixed bg-slate-100 -z-10 opacity-75 w-full h-full right-0 top-0"
+                    >
+                    </span>
+                    <Link href="/" class="flex">
+                        <span
+                            class="text-xl font-semibold sm:text-2xl whitespace-nowrap"
+                            >Kurdorg</span
+                        >
+                    </Link>
+                </div>
+                <Dropdown :title="`${user.username}`">
+                    <template #MenuItem>
+                        <div class="capitalize">
+                            <div
+                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                            >
+                                <Link href="/localNGOs/manage">
+                                    Manage LocalNGOs
+                                </Link>
+                            </div>
+                            <div
+                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                            >
+                                <Link href="/profile/{profile}">
+                                    My Profile
+                                </Link>
+                            </div>
+                            <div
+                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                            >
+                                <Link href="/localNGOs"> Manage Users </Link>
+                            </div>
+                            <div
+                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                            >
+                                <Link
+                                    href="/logout"
+                                    method="delete"
+                                    as="button"
+                                >
+                                    Logout
+                                </Link>
+                            </div>
+                        </div>
+                    </template>
+                </Dropdown>
             </div>
         </div>
     </nav>
     <!-- sidebar  -->
     <aside
         id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0"
+        class="fixed top-[65px] left-0 w-64 h-screen pt-5 transition-transform bg-white border-r border-gray-200 sm:translate-x-0"
+        :class="[open ? '' : '-translate-x-full']"
         aria-label="Sidebar"
     >
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white">

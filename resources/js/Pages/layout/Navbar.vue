@@ -23,7 +23,7 @@
                 class="absolute z-50 bg-redsh mt-2 md:mt-0 md:bg-white md:flex md:items-center md:px-0 px-5 md:pb-0 md:static md:w-auto w-full top-[75px] duration-500 ease-in"
                 :class="[open ? 'left-0' : 'left-[-100%]']"
             >
-                <li
+                <div
                     v-if="!user"
                     v-for="link in links"
                     class="text-lg font-semibold capitalize mx-3 my-5"
@@ -33,29 +33,32 @@
                         class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
                         >{{ link.name }}
                     </Link>
-                </li>
+                </div>
 
-                <div
-                    v-else
-                    class="text-lg font-semibold capitalize mx-3 my-5 space-x-3"
-                >
-                    <Link
-                        href="/dashboard"
-                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
-                        >Manage
-                    </Link>
-                    <Link
-                        href="/logout"
-                        method="delete"
-                        as="button"
-                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
-                        >Logout
-                    </Link>
-                    <Link
-                        href="/localNGOs"
-                        class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
-                        >LocalNGOs
-                    </Link>
+                <div v-else class="md:flex">
+                    <li class="text-lg font-semibold capitalize mx-3 my-5">
+                        <Link
+                            href="/dashboard"
+                            class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                            >Manage
+                        </Link>
+                    </li>
+                    <li class="text-lg font-semibold capitalize mx-3 my-5">
+                        <Link
+                            href="/logout"
+                            method="delete"
+                            as="button"
+                            class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                            >Logout
+                        </Link>
+                    </li>
+                    <li class="text-lg font-semibold capitalize mx-3 my-5">
+                        <Link
+                            href="/localNGOs"
+                            class="text-white opacity-100 md:text-black hover:opacity-60 duration-150"
+                            >LocalNGOs
+                        </Link>
+                    </li>
                 </div>
             </ul>
         </div>
@@ -67,7 +70,6 @@ import { ref, computed } from "vue";
 import { Link, usePage } from "@inertiajs/vue3";
 const user = computed(() => usePage().props.auth.user);
 
-let open = ref(false);
 let links = [
     { name: "Home", link: "/" },
     { name: "Local NGOs", link: "/localNGOs" },
@@ -78,6 +80,7 @@ let links = [
     { name: "Register", link: "/register" },
     { name: "Login", link: "/login" },
 ];
+let open = ref(false);
 function MenuOpen() {
     open.value = !open.value;
 }

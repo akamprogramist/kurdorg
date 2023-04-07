@@ -69,4 +69,12 @@ class LocalController extends Controller
         $local->update($formFields);
         return to_route('localNGOs');
     }
+
+    public function manage()
+    {
+        return Inertia::render('locals/Manage', [
+            'filters' => Request::only(['search', 'location']),
+            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString()
+        ]);
+    }
 }

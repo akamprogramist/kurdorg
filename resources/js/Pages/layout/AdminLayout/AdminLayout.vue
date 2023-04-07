@@ -10,7 +10,7 @@ function MenuOpen() {
 const user = computed(() => usePage().props.auth.user);
 </script>
 <template>
-    <nav class="fixed top-0 w-full bg-white border-b border-gray-200">
+    <nav class="fixed top-0 w-full z-10 bg-white border-b border-gray-200">
         <div class="px-3 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center ml-5 space-x-8">
@@ -20,7 +20,9 @@ const user = computed(() => usePage().props.auth.user);
                     >
                         <i
                             :class="[
-                                open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars',
+                                open
+                                    ? 'fa-solid fa-xmark pr-[7.5px]'
+                                    : 'fa-solid fa-bars',
                             ]"
                         ></i>
                     </span>
@@ -28,10 +30,10 @@ const user = computed(() => usePage().props.auth.user);
                     <span
                         v-if="open"
                         @click="MenuOpen()"
-                        class="fixed bg-slate-100 -z-10 opacity-75 w-full h-full right-0 top-0"
+                        class="fixed bg-black opacity-30 w-full h-full right-0 top-[65px]"
                     >
                     </span>
-                    <Link href="/" class="flex">
+                    <Link href="/">
                         <span
                             class="text-xl font-semibold sm:text-2xl whitespace-nowrap"
                             >Kurdorg</span
@@ -80,7 +82,7 @@ const user = computed(() => usePage().props.auth.user);
     <!-- sidebar  -->
     <aside
         id="logo-sidebar"
-        class="fixed top-[65px] left-0 w-64 h-screen pt-5 transition-transform bg-white border-r border-gray-200 sm:translate-x-0"
+        class="fixed top-[65px] z-50 left-0 w-64 h-screen pt-5 transition-transform bg-white border-r border-gray-200 md:translate-x-0"
         :class="[open ? '' : '-translate-x-full']"
         aria-label="Sidebar"
     >
@@ -88,7 +90,7 @@ const user = computed(() => usePage().props.auth.user);
             <ul class="space-y-2">
                 <li>
                     <Link
-                        href="/"
+                        href="/dashboard"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
                     >
                         <svg
@@ -110,7 +112,7 @@ const user = computed(() => usePage().props.auth.user);
                 </li>
                 <li>
                     <Link
-                        href="/medicines"
+                        href="/localNGOs/manage"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
                     >
                         <svg
@@ -125,13 +127,13 @@ const user = computed(() => usePage().props.auth.user);
                             ></path>
                         </svg>
                         <span class="flex-1 ml-3 whitespace-nowrap"
-                            >Storage</span
+                            >LocalNGOs</span
                         >
                     </Link>
                 </li>
                 <li>
                     <Link
-                        href="/medicines/create"
+                        href="/users/manage"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
                     >
                         <svg
@@ -147,12 +149,10 @@ const user = computed(() => usePage().props.auth.user);
                                 clip-rule="evenodd"
                             ></path>
                         </svg>
-                        <span class="flex-1 ml-3 whitespace-nowrap"
-                            >Add Medicines</span
-                        >
+                        <span class="flex-1 ml-3 whitespace-nowrap">Users</span>
                     </Link>
                 </li>
-                <li>
+                <!-- <li>
                     <Link
                         href="/sells"
                         class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
@@ -197,7 +197,7 @@ const user = computed(() => usePage().props.auth.user);
                             >Sell Medicines</span
                         >
                     </Link>
-                </li>
+                </li> -->
             </ul>
         </div>
     </aside>

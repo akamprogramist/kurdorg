@@ -31,12 +31,12 @@ class LocalController extends Controller
             $formFields['image'] = Request::file('image')->store('images', 'public');
         }
         Local::create($formFields);
-        return to_route('localNGOs');
+        return redirect('/localNGOs/manage')->with('success', 'created successfully');
     }
     public function destroy(Local $local)
     {
         $local->delete();
-        return to_route('localNGOs');
+        return redirect('/localNGOs/manage')->with('success', 'deleted successfully');
     }
     public function show(Local $local)
     {
@@ -67,7 +67,7 @@ class LocalController extends Controller
             $formFields['image'] = Request::file('image')->store('images', 'public');
         }
         $local->update($formFields);
-        return to_route('localNGOs');
+        return redirect('/localNGOs/manage')->with('success', 'Updated successfully');
     }
 
     public function manage()

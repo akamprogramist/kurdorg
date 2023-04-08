@@ -1,13 +1,29 @@
 <script setup>
+import { router, Link } from "@inertiajs/vue3";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
 import Pagination from "../components/Pagination.vue";
+import Button from "../components/Button.vue";
+import Flash from "../components/Flash.vue";
 const props = defineProps({ locals: Object });
+function destroy(id) {
+    if (confirm("Are you sure you want to delete this organization?")) {
+        router.delete(`/localNGOs/${id}`);
+    }
+}
 </script>
 <template>
     <AdminLayout>
-        <p class="text-3xl text-slate-700 text-center mb-5 font-bold">
-            Organizations
-        </p>
+        <div class="flex justify-between items-center my-5 px-5">
+            <p class="text-3xl text-slate-700 text-center font-bold">
+                LocalNGOs
+            </p>
+            <Flash />
+            <Link
+                href="/localNGOs/create"
+                class="bg-bluesh text-white font-semibold py-2 px-5 rounded hover:opacity-80"
+                >Create LocalNGO</Link
+            >
+        </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text- text-gray-700 capitalize bg-gray-50">
@@ -50,16 +66,18 @@ const props = defineProps({ locals: Object });
                         <td class="px-6 py-4">{{ local.id }}</td>
                         <td class="px-6 py-4">Yes</td>
                         <td class="flex items-center px-6 py-4 space-x-3">
-                            <a
-                                href="#"
-                                class="font-medium text-blue-600 hover:underline"
-                                >Edit</a
+                            <Button
+                                @click="destroy(local.id)"
+                                class="bg-redsh hover:opacity-70 text-base rounded-none py-1"
                             >
-                            <a
-                                href="#"
-                                class="font-medium text-red-600 hover:underline"
-                                >Remove</a
+                                Delete
+                            </Button>
+                            <Link
+                                :href="`/localNGOs/${local.id}/edit`"
+                                class="bg-yellowsh text-white hover:opacity-70 text-base rounded-none py-1 px-6"
                             >
+                                Edit
+                            </Link>
                         </td>
                     </tr>
                 </tbody>

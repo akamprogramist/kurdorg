@@ -2,7 +2,7 @@
     <div class="flex justify-center">
         <div
             v-if="$page.props.flash.success && show"
-            class="flex items-center justify-between mb-8 max-w-3xl bg-green-500 rounded"
+            class="flex items-center justify-between bg-green-500 rounded"
         >
             <div class="flex items-center">
                 <svg
@@ -12,7 +12,7 @@
                 >
                     <polygon points="0 11 2 9 7 14 18 3 20 5 7 18" />
                 </svg>
-                <div class="py-4 text-white text-sm font-medium">
+                <div class="py-2 text-white text-sm font-medium">
                     {{ $page.props.flash.success }}
                 </div>
             </div>

@@ -1,70 +1,117 @@
 <template>
-    <Container class="bg-indigo-200 py-16 px-10">
+    <div
+        class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5"
+    >
         <div
-            class="grid grid-cols-1 md:grid-cols-2 items-center rounded-xl p-10 bg-white"
+            class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
+            style="max-width: 1000px"
         >
-            <div>
-                <div class="space-y-1">
-                    <p class="text-3xl text-indigo-700 capitalize font-bold">
-                        get In touch
-                    </p>
-                    <p>We are here to help you! can we help?</p>
+            <div class="md:flex w-full">
+                <div class="md:block md:w-1/2 bg-indigo-500 py-10 px-10">
+                    <!-- put image in here  -->
                 </div>
-                <div class="my-10">
-                    <div class="grid gap-5 md:grid-cols-2">
-                        <input
-                            type="text"
-                            class="border px-3 py-2 bg-indigo-50 rounded-lg focus:outline-none"
-                            placeholder="Enter your name"
-                        />
-                        <input
-                            type="text"
-                            class="border px-3 py-2 bg-indigo-50 rounded-lg focus:outline-none"
-                            placeholder="Enter your name"
-                        />
-                        <textarea
-                            name=""
-                            id=""
-                            class="border col-span-1 md:col-span-2 px-3 py-2 bg-indigo-50 rounded-lg focus:outline-none"
-                            cols="30"
-                            rows="5"
-                            placeholder="Go ahead, We are listening"
-                        ></textarea>
+                <div class="w-full md:w-1/2 py-10 px-5 md:px-10">
+                    <div class="text-center mb-10">
+                        <h1 class="font-bold text-3xl text-gray-900">
+                            CONTACT US
+                        </h1>
+                        <p>Enter your information to contact</p>
                     </div>
-                    <input
-                        type="submit"
-                        class="py-3 my-5 rounded-lg text-white w-full bg-violet-500"
-                        name=""
-                        id=""
-                    />
+                    <div>
+                        <div class="flex -mx-3">
+                            <div class="w-1/2 px-3 mb-5">
+                                <label for="" class="text-xs font-semibold px-1"
+                                    >First name</label
+                                >
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                                    >
+                                        <i
+                                            class="mdi mdi-account-outline text-gray-400 text-lg"
+                                        ></i>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                        placeholder="John"
+                                    />
+                                </div>
+                            </div>
+                            <div class="w-1/2 px-3 mb-5">
+                                <label for="" class="text-xs font-semibold px-1"
+                                    >Last name</label
+                                >
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                                    >
+                                        <i
+                                            class="mdi mdi-account-outline text-gray-400 text-lg"
+                                        ></i>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                        placeholder="Smith"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-5">
+                                <label for="" class="text-xs font-semibold px-1"
+                                    >Email</label
+                                >
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                                    >
+                                        <i
+                                            class="mdi mdi-email-outline text-gray-400 text-lg"
+                                        ></i>
+                                    </div>
+                                    <input
+                                        type="email"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                        placeholder="johnsmith@example.com"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-12">
+                                <label for="" class="text-xs font-semibold px-1"
+                                    >Write for Us</label
+                                >
+                                <div class="flex">
+                                    <div
+                                        class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"
+                                    >
+                                        <i
+                                            class="mdi mdi-lock-outline text-gray-400 text-lg"
+                                        ></i>
+                                    </div>
+                                    <textarea
+                                        placeholder="Write here"
+                                        class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                                    ></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex -mx-3">
+                            <div class="w-full px-3 mb-5">
+                                <button
+                                    class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                                >
+                                    SEND NOW
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="">
-                <img
-                    src="../../../../storage/app/public/images/undraw.png"
-                    alt=""
-                />
-                <!-- <div class="items-center mx-16 md:mx-40 space-y-5">
-                    <div class="flex space-x-2 items-center">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p class="text-xl font-semibold capitalize">
-                            sulaymaniah
-                        </p>
-                    </div>
-                    <div class="flex space-x-2">
-                        <i class="fa-solid fa-location"></i>
-                        <p>07700656816</p>
-                    </div>
-                    <div class="flex space-x-2">
-                        <i class="fa-solid fa-mail"></i>
-                        <p>@kurdorg</p>
-                    </div>
-                </div> -->
             </div>
         </div>
-    </Container>
+    </div>
 </template>
 
-<script setup>
-import Container from "../layout/Container.vue";
-</script>

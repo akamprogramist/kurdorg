@@ -24,13 +24,13 @@ Route::get('/', function () {
 
 
 Route::get('localNGOs', [LocalController::class, 'index'])->name('localNGOs');
-Route::get('localNGOs/manage', [LocalController::class, 'manage']);
-Route::get('localNGOs/create', [LocalController::class, 'create']);
+Route::get('localNGOs/manage', [LocalController::class, 'manage'])->middleware('auth');
+Route::get('localNGOs/create', [LocalController::class, 'create'])->middleware('auth');
 Route::post('localNGOs', [LocalController::class, 'store']);
 Route::get('localNGOs/{local}', [LocalController::class, 'show']);
-Route::get('localNGOs/{local}/edit', [LocalController::class, 'edit']);
+Route::get('localNGOs/{local}/edit', [LocalController::class, 'edit'])->middleware('auth');
 Route::post('localNGOs/{local}', [LocalController::class, 'update']);
-Route::delete('localNGOs/{local}', [LocalController::class, 'destroy']);
+Route::delete('localNGOs/{local}', [LocalController::class, 'destroy'])->middleware('auth');
 
 
 Route::get('/register', [UserController::class, 'create']);

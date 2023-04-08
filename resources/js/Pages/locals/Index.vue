@@ -4,14 +4,8 @@ import { router, Link } from "@inertiajs/vue3";
 import Pagination from "../components/Pagination.vue";
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
-import Button from "../components/Button.vue";
 import Search from "../components/Search.vue";
 import Select from "../components/Select.vue";
-function destroy(id) {
-    if (confirm("Are you sure you want to delete this organization?")) {
-        router.delete(`/localNGOs/${id}`);
-    }
-}
 const props = defineProps({ locals: Object, filters: Object });
 const search = ref(props.filters.search);
 
@@ -90,31 +84,17 @@ function getlocation() {
                                     {{ local.location }}
                                 </p>
                             </div>
-                            <a
-                                href="#"
-                                class="group mt-6 flex gap-1 text-sm font-medium justify-between text-bluesh items-center"
-                            >
-                                <Button
-                                    class="bg-blues hover:opacity-70 text-base rounded-none py-2 px-6"
+                            <div class="flex justify-between items-center mt-5">
+                                <Link
+                                    :href="`/localNGOs/${local.id}`"
+                                    class="bg-bluesh text-white hover:opacity-70 text-base rounded-none py-2 px-6"
                                 >
                                     View More
-                                </Button>
-                                <Button
-                                    @click="destroy(local.id)"
-                                    class="bg-redsh hover:opacity-70 text-base rounded-none py-2 px-6"
-                                >
-                                    Delete
-                                </Button>
-                                <Link
-                                    :href="`/localNGOs/${local.id}/edit`"
-                                    class="bg-yellowsh text-white hover:opacity-70 text-base rounded-none py-2 px-6"
-                                >
-                                    Edit
                                 </Link>
                                 <i
-                                    class="fa-regular fa-heart text-xl hover:text-yellowsh"
+                                    class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
                                 ></i>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>

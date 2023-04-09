@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
 {
+    public function manage()
+    {
+        return Inertia::render('users/Manage', [
+            'users' => User::latest()->paginate(6)
+        ]);
+    }
     public function create()
     {
         return Inertia::render('users/Register');

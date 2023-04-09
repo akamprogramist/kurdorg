@@ -17,7 +17,7 @@ function submit() {
 
 <template>
     <AdminLayout>
-        <p>Create A local Organization</p>
+        <p class="text-3xl text-slate-700 mb-5 font-bold">Update Local NGO</p>
         <form @submit.prevent="submit">
             <div class="space-y-5">
                 <input

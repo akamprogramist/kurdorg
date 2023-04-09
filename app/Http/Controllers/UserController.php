@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Inertia\Inertia;
-use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
@@ -25,7 +24,7 @@ class UserController extends Controller
     public function store()
     {
         $formFields = Request::validate([
-            "username" => ['required', Rule::unique('users')],
+            'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users')],
             'password' => 'required|confirmed',
         ]);

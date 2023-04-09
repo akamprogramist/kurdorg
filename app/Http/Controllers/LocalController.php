@@ -22,7 +22,7 @@ class LocalController extends Controller
     public function store()
     {
         $formFields = Request::validate([
-            "name" => ['required'],
+            'name' => ['required'],
             'description' => ['required'],
             'location' => ['required'],
         ]);
@@ -30,6 +30,9 @@ class LocalController extends Controller
         if (Request::hasFile('image')) {
             $formFields['image'] = Request::file('image')->store('images', 'public');
         }
+
+        $formFields['user_id'] = auth()->id();
+
         Local::create($formFields);
         return redirect('/localNGOs/manage')->with('success', 'created successfully');
     }

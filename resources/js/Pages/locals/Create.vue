@@ -3,6 +3,7 @@ import { useForm, Link } from "@inertiajs/vue3";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
 const form = useForm({
     name: null,
+    user_id: id,
     description: null,
     location: null,
     image: null,
@@ -16,7 +17,7 @@ function submit() {
 
 <template>
     <AdminLayout>
-        <p>Create A local Organization</p>
+        <p class="text-3xl text-slate-700 mb-5 font-bold">Create Local NGO</p>
         <form @submit.prevent="submit">
             <div class="space-y-5">
                 <input

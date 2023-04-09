@@ -1,6 +1,6 @@
 <template>
     <AdminLayout>
-        <p>welcome {{ user.username }}</p>
+        <p>welcome {{ user.name }}</p>
     </AdminLayout>
 </template>
 

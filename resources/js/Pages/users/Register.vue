@@ -6,7 +6,7 @@ import Layout from "../layout/Layout.vue";
 import { useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-    username: null,
+    name: null,
     email: null,
     password: null,
     password_confirmation: null,
@@ -30,18 +30,18 @@ function submit() {
 
                 <form @submit.prevent="submit">
                     <div class="mb-6">
-                        <label for="username" class="inline-block text-lg mb-2">
-                            Username
+                        <label for="name" class="inline-block text-lg mb-2">
+                            Name
                         </label>
                         <input
-                            v-model="form.username"
+                            v-model="form.name"
                             type="text"
-                            id="username"
+                            id="name"
                             class="border border-gray-200 rounded p-2 w-full"
-                            name="username"
+                            name="name"
                         />
-                        <div v-if="form.errors.username">
-                            {{ form.errors.username }}
+                        <div v-if="form.errors.name">
+                            {{ form.errors.name }}
                         </div>
                     </div>
 

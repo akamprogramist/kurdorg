@@ -40,7 +40,7 @@ const user = computed(() => usePage().props.auth.user);
                         >
                     </Link>
                 </div>
-                <Dropdown :title="`${user.username}`">
+                <Dropdown :title="`${user.name}`">
                     <template #MenuItem>
                         <div class="capitalize">
                             <div

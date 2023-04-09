@@ -26,7 +26,7 @@ function destroy(id) {
             <table class="w-full whitespace-nowrap">
                 <thead>
                     <tr class="text-left font-bold">
-                        <th class="py-3 px-6">Username</th>
+                        <th class="py-3 px-6">Name</th>
                         <th class="py-3 px-6">Email</th>
                         <th class="py-3 px-6">Id</th>
                         <th class="py-3 px-5">Action</th>
@@ -43,7 +43,7 @@ function destroy(id) {
                                 class="flex items-center px-6 py-4 focus:text-indigo-500"
                                 :href="`/users/${user.id}/edit`"
                             >
-                                {{ user.username }}
+                                {{ user.name }}
                             </Link>
                         </td>
                         <td class="border-t">

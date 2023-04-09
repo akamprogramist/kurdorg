@@ -5,7 +5,7 @@
         <div class="text-xl uppercase font-semibold">
             <p>kurdorg</p>
         </div>
-        <header v-if="user">You are {{ user.username }}</header>
+        <header v-if="user">You are {{ user.name }}</header>
         <div>
             <span @click="MenuOpen()" class="md:hidden cursor-pointer text-3xl">
                 <i

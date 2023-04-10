@@ -4,6 +4,7 @@ import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
 const props = defineProps({ local: Object });
 const form = useForm({
     name: props.local.name,
+    user_id: props.local.user_id,
     description: props.local.description,
     location: props.local.location,
     image: props.local.image,
@@ -13,6 +14,7 @@ function submit() {
         onSuccess: () => form.reset(),
     });
 }
+console.log(props.local.user_id);
 </script>
 
 <template>
@@ -20,6 +22,15 @@ function submit() {
         <p class="text-3xl text-slate-700 mb-5 font-bold">Update Local NGO</p>
         <form @submit.prevent="submit">
             <div class="space-y-5">
+                <input
+                    v-model="form.user_id"
+                    id="user_id"
+                    type="text"
+                    name="user_id"
+                    class="border"
+                    disabled
+                />
+                <br />
                 <input
                     v-model="form.name"
                     id="name"

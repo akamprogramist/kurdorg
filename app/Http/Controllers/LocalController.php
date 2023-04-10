@@ -52,6 +52,7 @@ class LocalController extends Controller
         return Inertia::render('locals/Edit', [
             'local' => [
                 'id' => $local->id,
+                'user_id' => $local->user_id,
                 'name' => $local->name,
                 'description' => $local->description,
                 'location' => $local->location

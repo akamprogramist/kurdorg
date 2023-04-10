@@ -59,4 +59,10 @@ class UserController extends Controller
         }
         return back()->withErrors(['error' => 'Invalid Credentials']);
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('/users/manage')->with('success', 'user deleted successfully');
+    }
 }

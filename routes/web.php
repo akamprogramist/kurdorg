@@ -38,6 +38,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
 

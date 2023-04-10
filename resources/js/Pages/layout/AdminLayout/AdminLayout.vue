@@ -43,36 +43,32 @@ const user = computed(() => usePage().props.auth.user);
                 <Dropdown :title="`${user.name}`">
                     <template #MenuItem>
                         <div class="capitalize">
-                            <div
-                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
-                            >
-                                <Link href="/localNGOs/manage">
+                            <Link href="/localNGOs/manage">
+                                <div
+                                    class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                                >
                                     Manage LocalNGOs
-                                </Link>
-                            </div>
-                            <div
-                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                                </div>
+                            </Link>
+                            <Link href="/users/manage">
+                                <div
+                                    class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
+                                >
+                                    Manage Users
+                                </div>
+                            </Link>
+                            <Link
+                                href="/logout"
+                                method="delete"
+                                as="button"
+                                class="w-full"
                             >
-                                <Link href="/profile/{profile}">
-                                    My Profile
-                                </Link>
-                            </div>
-                            <div
-                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
-                            >
-                                <Link href="/localNGOs"> Manage Users </Link>
-                            </div>
-                            <div
-                                class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
-                            >
-                                <Link
-                                    href="/logout"
-                                    method="delete"
-                                    as="button"
+                                <div
+                                    class="w-full text-left px-5 items-center py-2 text-sm hover:bg-bluesh hover:text-white"
                                 >
                                     Logout
-                                </Link>
-                            </div>
+                                </div>
+                            </Link>
                         </div>
                     </template>
                 </Dropdown>

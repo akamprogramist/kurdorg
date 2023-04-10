@@ -17,7 +17,7 @@ function destroy(id) {
             <p class="text-3xl text-slate-700 text-center font-bold">Users</p>
             <Flash />
             <Link
-                href="/users/create"
+                href="/register"
                 class="bg-bluesh text-white font-semibold py-2 px-5 rounded hover:opacity-80"
                 >Create User</Link
             >

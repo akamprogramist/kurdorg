@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('locals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->string('name');
             $table->string('description');
             $table->string('location');

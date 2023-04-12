@@ -77,8 +77,7 @@ class LocalController extends Controller
     public function manage()
     {
         return Inertia::render('locals/Manage', [
-            'filters' => Request::only(['search', 'location']),
-            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString()
+            'locals' => Local::latest()->paginate(6)
         ]);
     }
 }

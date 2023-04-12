@@ -35,7 +35,7 @@ Route::delete('localNGOs/{local}', [LocalController::class, 'destroy'])->middlew
 
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
-Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth');
+Route::get('/users/manage', [UserController::class, 'manage'])->middleware('auth', 'is_admin');
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);

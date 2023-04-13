@@ -76,8 +76,9 @@ class LocalController extends Controller
 
     public function manage()
     {
+        $locals = auth()->user()->locals;
         return Inertia::render('locals/Manage', [
-            'locals' => Local::latest()->paginate(6)
+            'locals' => $locals,
         ]);
     }
 }

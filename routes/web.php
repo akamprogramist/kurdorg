@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminLocalController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -46,7 +48,13 @@ Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');
 })->middleware('auth');
 
-
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/locals', LocalController::class);
+    Route::middleware(['is_admin'])->name('admin.')->prefix('admin')->group(function () {
+        Route::get('/', [AdminController::class, 'index']);
+        Route::resource('/products', AdminLocalController::class);
+    });
+});
 
 
 Route::get('/internationalNGOs', [InternationalController::class, 'Index']);

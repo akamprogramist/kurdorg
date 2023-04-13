@@ -76,9 +76,16 @@ class LocalController extends Controller
 
     public function manage()
     {
+
         $locals = auth()->user()->locals;
-        return Inertia::render('locals/Manage', [
-            'locals' => $locals,
-        ]);
+        if (auth()->user()->role_id === 1) {
+            return Inertia::render('locals/Manage', [
+                'locals' => $locals,
+            ]);
+        } else {
+            return Inertia::render('locals/Manage', [
+                'locals' => Local::all()
+            ]);
+        }
     }
 }

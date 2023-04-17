@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Local;
 use Illuminate\Support\Facades\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Session;
 
 class LocalController extends Controller
 {
@@ -43,9 +44,16 @@ class LocalController extends Controller
     }
     public function show(Local $local)
     {
-        
+        // this will make a unique value
+        $key = 'post_' . $local->id . '_views';
+        // the session facades helper give a specific token for a user
+        if (!Session::has($key)) {
+            $local->increment('count');
+            // then save the unique value
+            Session::put($key, true);
+        }
         return Inertia::render('locals/Show', [
-            'local' => $local
+            'local' => $local,
         ]);
     }
     public function edit(Local $local)

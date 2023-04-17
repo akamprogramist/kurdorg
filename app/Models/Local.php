@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Local extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'location', 'image', 'user_id'];
+    protected $fillable = ['name', 'description', 'location', 'image', 'user_id', 'count'];
 
     public function scopeFilter($query, array $filters)
     {

@@ -91,6 +91,12 @@ function getlocation() {
                                 >
                                     View More
                                 </Link>
+                                <div
+                                    class="hover:opacity-70 items-center text-base text-bluesh rounded-none py-2 px-6"
+                                >
+                                    <i class="fa-solid fa-eye"></i>
+                                    {{ local.count }}
+                                </div>
                                 <i
                                     class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
                                 ></i>

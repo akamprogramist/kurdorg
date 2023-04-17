@@ -43,6 +43,7 @@ class LocalController extends Controller
     }
     public function show(Local $local)
     {
+        
         return Inertia::render('locals/Show', [
             'local' => $local
         ]);

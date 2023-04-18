@@ -43,6 +43,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
+Route::post('/posts/{post}/favorites', [PostController::class, 'addToFavorites']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

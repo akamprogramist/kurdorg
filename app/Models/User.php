@@ -7,6 +7,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -48,5 +50,9 @@ class User extends Authenticatable
     public function locals(): HasMany
     {
         return $this->hasMany(Local::class, 'user_id');
+    }
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Local::class, 'favorites')->withTimestamps();
     }
 }

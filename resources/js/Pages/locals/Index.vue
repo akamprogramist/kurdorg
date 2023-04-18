@@ -30,6 +30,11 @@ function getlocation() {
         }
     );
 }
+function addFavorite(id) {
+    router.post(`/favorite/${id}`, {
+        local_id: id,
+    });
+}
 </script>
 
 <template>
@@ -97,9 +102,23 @@ function getlocation() {
                                     <i class="fa-solid fa-eye"></i>
                                     {{ local.count }}
                                 </div>
-                                <i
-                                    class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
-                                ></i>
+                                <button
+                                    v-if="isFavorite"
+                                    @click="removeFavorite(local.id)"
+                                    type="submit"
+                                >
+                                    <i
+                                        class="fa-solid fa-heart text-xl text-bluesh hover:text-yellowsh"
+                                    ></i>
+                                </button>
+                                <button
+                                    @click="addFavorite(local.id)"
+                                    type="submit"
+                                >
+                                    <i
+                                        class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
+                                    ></i>
+                                </button>
                             </div>
                         </div>
                     </div>

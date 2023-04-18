@@ -51,6 +51,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Local::class, 'user_id');
     }
+
+    // relationship to favorite
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Local::class, 'favorites')->withTimestamps();

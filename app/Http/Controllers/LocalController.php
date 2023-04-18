@@ -59,7 +59,7 @@ class LocalController extends Controller
     public function edit(Local $local)
     {
         return Inertia::render('locals/Edit', [
-            'local' => [
+            'locals' => [
                 'id' => $local->id,
                 'user_id' => $local->user_id,
                 'name' => $local->name,

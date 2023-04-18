@@ -1,20 +1,19 @@
 <script setup>
 import { useForm, Link } from "@inertiajs/vue3";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
-const props = defineProps({ local: Object });
+const props = defineProps({ locals: Object });
 const form = useForm({
-    name: props.local.name,
-    user_id: props.local.user_id,
-    description: props.local.description,
-    location: props.local.location,
-    image: props.local.image,
+    name: props.locals.name,
+    user_id: props.locals.user_id,
+    description: props.locals.description,
+    location: props.locals.location,
+    image: props.locals.image,
 });
 function submit() {
-    form.post(`/localNGOs/${props.local.id}`, {
+    form.post(`/localNGOs/${props.locals.id}`, {
         onSuccess: () => form.reset(),
     });
 }
-console.log(props.local.user_id);
 </script>
 
 <template>

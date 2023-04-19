@@ -103,7 +103,6 @@ function addFavorite(id) {
                                     {{ local.count }}
                                 </div>
                                 <button
-                                    v-if="isFavorite"
                                     @click="removeFavorite(local.id)"
                                     type="submit"
                                 >

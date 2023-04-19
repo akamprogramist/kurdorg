@@ -13,7 +13,7 @@ class LocalController extends Controller
     {
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
-            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString()
+            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
         ]);
     }
     public function create()

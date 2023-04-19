@@ -12,6 +12,7 @@ class Local extends Model
     use HasFactory;
     protected $fillable = ['name', 'description', 'location', 'image', 'user_id', 'count'];
 
+    // filter products
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false) {
@@ -26,12 +27,13 @@ class Local extends Model
         });
     }
 
+
     // relationship to user
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function favoritedBy(): BelongsToMany
+    public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }

@@ -6,7 +6,11 @@ import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
 import Search from "../components/Search.vue";
 import Select from "../components/Select.vue";
-const props = defineProps({ locals: Object, filters: Object });
+const props = defineProps({
+    locals: Object,
+    filters: Object,
+    isWishlisted: Boolean,
+});
 const search = ref(props.filters.search);
 
 watch(search, (value) => {
@@ -103,6 +107,7 @@ function addFavorite(id) {
                                     {{ local.count }}
                                 </div>
                                 <button
+                                    v-if="isWishlisted"
                                     @click="removeFavorite(local.id)"
                                     type="submit"
                                 >

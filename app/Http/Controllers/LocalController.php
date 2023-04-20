@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Local;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -11,6 +13,7 @@ class LocalController extends Controller
 {
     public function index()
     {
+
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
             'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
@@ -44,6 +47,9 @@ class LocalController extends Controller
     }
     public function show(Local $local)
     {
+        $local_id = local::find($local->id);
+        $user = auth()->user();
+        $isWishlisted = $local_id->favorite()->where('user_id', $user)->exists();
         // this will make a unique value
         $key = 'post_' . $local->id . '_views';
         // the session facades helper give a specific token for a user
@@ -54,6 +60,7 @@ class LocalController extends Controller
         }
         return Inertia::render('locals/Show', [
             'local' => $local,
+            'isWishlisted' => $isWishlisted
         ]);
     }
     public function edit(Local $local)

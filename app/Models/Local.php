@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Favorite;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +27,12 @@ class Local extends Model
             }
         });
     }
+    public function checkFavourites()
+    {
+        if ($this->favourite) {
+            return $this->favourite->count() && auth()->user()->id == $this->favourite->user_id;
+        }
+    }
 
 
     // relationship to user
@@ -33,8 +40,8 @@ class Local extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function favorites(): BelongsToMany
+    public function favorite(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }

@@ -53,7 +53,7 @@ class User extends Authenticatable
     }
 
     // relationship to favorite
-    public function favorites(): BelongsToMany
+    public function favoriteby(): BelongsToMany
     {
         return $this->belongsToMany(Local::class, 'favorites');
     }

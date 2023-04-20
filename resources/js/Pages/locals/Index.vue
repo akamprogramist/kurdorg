@@ -9,7 +9,6 @@ import Select from "../components/Select.vue";
 const props = defineProps({
     locals: Object,
     filters: Object,
-    isWishlisted: Boolean,
 });
 const search = ref(props.filters.search);
 
@@ -38,6 +37,9 @@ function addFavorite(id) {
     router.post(`/favorite/${id}`, {
         local_id: id,
     });
+}
+function removeFavorite(id) {
+    router.delete(`/favorite/${id}`);
 }
 </script>
 
@@ -106,8 +108,9 @@ function addFavorite(id) {
                                     <i class="fa-solid fa-eye"></i>
                                     {{ local.count }}
                                 </div>
+                                {{ local.isWishlisted }}
                                 <button
-                                    v-if="isWishlisted"
+                                    v-if="local.isWishlisted"
                                     @click="removeFavorite(local.id)"
                                     type="submit"
                                 >
@@ -116,6 +119,7 @@ function addFavorite(id) {
                                     ></i>
                                 </button>
                                 <button
+                                    v-else
                                     @click="addFavorite(local.id)"
                                     type="submit"
                                 >
@@ -123,6 +127,7 @@ function addFavorite(id) {
                                         class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
                                     ></i>
                                 </button>
+                                {{ local.id }}
                             </div>
                         </div>
                     </div>

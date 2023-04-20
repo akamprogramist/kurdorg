@@ -13,7 +13,12 @@ class LocalController extends Controller
 {
     public function index()
     {
-
+        $user = Auth::user();
+        $locals = Local::with('favorites')->get()->map(function ($local) use ($user) {
+            $local->isWishlisted = $user->favoriteby()->where('local_id', $local->id)->exists();
+            return $local;
+        });
+        // dd($locals);
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
             'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),

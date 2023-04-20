@@ -27,20 +27,20 @@ class Local extends Model
             }
         });
     }
-    public function checkFavourites()
-    {
-        if ($this->favourite) {
-            return $this->favourite->count() && auth()->user()->id == $this->favourite->user_id;
-        }
-    }
-
-
+    // public function scopeFavorite()
+    // {
+    //     $user = auth()->user();
+    //     Local::with('favorites')->get()->map(function ($local) use ($user) {
+    //         $local->isWishlisted = $user->favoriteby()->where('local_id', $local->id)->exists();
+    //         return $local;
+    //     });
+    // }
     // relationship to user
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function favorite(): BelongsToMany
+    public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites');
     }

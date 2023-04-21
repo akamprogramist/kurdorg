@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Local;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,15 +12,11 @@ class LocalController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $locals = Local::with('favorites')->get()->map(function ($local) use ($user) {
-            $local->isWishlisted = $user->favoriteby()->where('local_id', $local->id)->exists();
-            return $local;
-        });
-        // dd($locals);
+
+        $user = auth()->user();
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
-            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+            'locals' => Local::latest()->withIsWishlisted($user)->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
         ]);
     }
     public function create()

@@ -27,14 +27,16 @@ class Local extends Model
             }
         });
     }
-    // public function scopeFavorite()
-    // {
-    //     $user = auth()->user();
-    //     Local::with('favorites')->get()->map(function ($local) use ($user) {
-    //         $local->isWishlisted = $user->favoriteby()->where('local_id', $local->id)->exists();
-    //         return $local;
-    //     });
-    // }
+    public function scopeWithIsWishlisted($query, $user)
+    {
+        return $query->with([
+            'favorites'
+        ])
+            ->select(['id', 'name', 'description', 'image'])
+            ->withCount(['favorites as isWishlisted' => function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            }]);
+    }
     // relationship to user
     public function user(): BelongsTo
     {

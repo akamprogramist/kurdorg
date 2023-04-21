@@ -45,7 +45,6 @@ Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
 Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addFavorite']);
-Route::delete('/favorite/{id}', [FavoriteLocalController::class, 'removeFavorite']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

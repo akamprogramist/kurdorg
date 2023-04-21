@@ -106,7 +106,9 @@ function removeFavorite(id) {
                                     class="hover:opacity-70 items-center text-base text-bluesh rounded-none py-2 px-6"
                                 >
                                     <i class="fa-solid fa-eye"></i>
+                                    {{ local.count }}
                                 </div>
+
                                 <button
                                     v-if="local.isWishlisted"
                                     @click="removeFavorite(local.id)"
@@ -128,7 +130,6 @@ function removeFavorite(id) {
                             </div>
                         </div>
                     </div>
-                    {{ local.favorites }}
                 </div>
                 <div v-if="locals.data.length === 0">
                     <p

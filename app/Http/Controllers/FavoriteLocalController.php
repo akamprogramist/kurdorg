@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Favorite;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class FavoriteLocalController extends Controller
 {
-    public function addFavorite(Request $request)
+    public function addFavorite($id)
     {
-        Favorite::create([
-            'user_id' => auth()->id(),
-            'local_id' => $request->local_id
-        ]);
+        $check = Favorite::where('user_id', Auth::id())->where('local_id', $id)->first();
+        if ($check) {
+            $check->delete();
+        } else {
+            Favorite::create([
+                'user_id' => auth()->id(),
+                'local_id' => $id
+            ]);
+        }
         return back()->with('success', 'Post added to favorites!');
-    }
-    public function removeFavorite(Favorite $favorite)
-    {
-        $favorite->delete();
-        return back()->with('success', 'deleted successfully');
     }
 }

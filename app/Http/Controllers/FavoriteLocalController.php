@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class FavoriteLocalController extends Controller
 {
-    public function addFavorite($id)
+    public function toggleFav($id)
     {
         $check = Favorite::where('user_id', Auth::id())->where('local_id', $id)->first();
         if ($check) {
@@ -17,8 +17,9 @@ class FavoriteLocalController extends Controller
             Favorite::create([
                 'user_id' => auth()->id(),
                 'local_id' => $id
+
             ]);
         }
-        return back()->with('success', 'Post added to favorites!');
+        return back()->with('success', 'Post Changed favorites!');
     }
 }

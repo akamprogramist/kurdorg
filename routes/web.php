@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AdminLocalController;
 use App\Http\Controllers\FavoriteLocalController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +42,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
-Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addFavorite']);
+Route::post('/favorite/{id}', [FavoriteLocalController::class, 'toggleFav'])->middleware('auth');;
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

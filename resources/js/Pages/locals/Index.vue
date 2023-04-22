@@ -6,12 +6,14 @@ import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
 import Search from "../components/Search.vue";
 import Select from "../components/Select.vue";
+
 const props = defineProps({
     locals: Object,
     filters: Object,
+    fav: Object,
 });
-const search = ref(props.filters.search);
 
+const search = ref(props.filters.search);
 watch(search, (value) => {
     router.get(
         "/localNGOs",
@@ -22,6 +24,7 @@ watch(search, (value) => {
         }
     );
 });
+
 const location = ref("all");
 function getlocation() {
     router.get(
@@ -33,13 +36,11 @@ function getlocation() {
         }
     );
 }
-function addFavorite(id) {
+
+function toggleFav(id) {
     router.post(`/favorite/${id}`, {
         local_id: id,
     });
-}
-function removeFavorite(id) {
-    router.delete(`/favorite/${id}`);
 }
 </script>
 
@@ -108,23 +109,17 @@ function removeFavorite(id) {
                                     <i class="fa-solid fa-eye"></i>
                                     {{ local.count }}
                                 </div>
-
                                 <button
-                                    v-if="local.isWishlisted"
-                                    @click="removeFavorite(local.id)"
+                                    @click="toggleFav(local.id)"
                                     type="submit"
                                 >
                                     <i
-                                        class="fa-solid fa-heart text-xl text-bluesh hover:text-yellowsh"
-                                    ></i>
-                                </button>
-                                <button
-                                    v-else
-                                    @click="addFavorite(local.id)"
-                                    type="submit"
-                                >
-                                    <i
-                                        class="fa-regular fa-heart text-xl text-bluesh hover:text-yellowsh"
+                                        class="fa-heart text-xl text-bluesh hover:text-yellowsh"
+                                        :class="
+                                            fav.includes(local.id)
+                                                ? 'fa-solid'
+                                                : 'fa-regular'
+                                        "
                                     ></i>
                                 </button>
                             </div>

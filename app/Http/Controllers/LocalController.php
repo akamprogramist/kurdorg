@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Favorite;
 use Inertia\Inertia;
 use App\Models\Local;
 use Illuminate\Support\Facades\Request;
@@ -12,11 +11,19 @@ class LocalController extends Controller
 {
     public function index()
     {
+        $fav = [];
+        if (auth()->check()) {
+            // favoriteby return the collection and the pluck returns a new collection with only the id attribute
+            $fav = auth()->user()->favoriteby->pluck('id')->toArray();
+        }
+
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
             'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+            'fav' => $fav
         ]);
     }
+
     public function create()
     {
         return Inertia::render('locals/Create');

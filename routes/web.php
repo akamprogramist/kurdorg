@@ -42,7 +42,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
-Route::post('/favorite/{id}', [FavoriteLocalController::class, 'toggleFav'])->middleware('auth');;
+Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addremoveFav'])->middleware('auth');;
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

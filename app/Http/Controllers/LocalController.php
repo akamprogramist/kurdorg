@@ -16,11 +16,15 @@ class LocalController extends Controller
             // favoriteby return the collection and the pluck returns a new collection with only the id attribute
             $fav = auth()->user()->favoriteby->pluck('id')->toArray();
         }
-
+        $favdata = [];
+        if (auth()->check()) {
+            $favdata = auth()->user()->favoriteby;
+        }
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
             'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
-            'fav' => $fav
+            'favdata' => $favdata,
+            'fav' => $fav,
         ]);
     }
 
@@ -52,9 +56,6 @@ class LocalController extends Controller
     }
     public function show(Local $local)
     {
-        $local_id = local::find($local->id);
-        $user = auth()->user();
-        $isWishlisted = $local_id->favorite()->where('user_id', $user)->exists();
         // this will make a unique value
         $key = 'post_' . $local->id . '_views';
         // the session facades helper give a specific token for a user
@@ -65,7 +66,6 @@ class LocalController extends Controller
         }
         return Inertia::render('locals/Show', [
             'local' => $local,
-            'isWishlisted' => $isWishlisted
         ]);
     }
     public function edit(Local $local)

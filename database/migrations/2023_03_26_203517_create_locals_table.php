@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('set null');
             $table->string('name');
             $table->string('description');
+            $table->enum('status', ['pending', 'accepted'])->default('pending');
             $table->string('location');
             $table->integer('count')->default(0);
             $table->string('image')->nullable();

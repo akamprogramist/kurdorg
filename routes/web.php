@@ -26,6 +26,7 @@ Route::get('/', function () {
 
 Route::get('localNGOs', [LocalController::class, 'index'])->name('localNGOs');
 Route::get('localNGOs/manage', [LocalController::class, 'manage'])->middleware('auth');
+Route::post('/localNGOs/manage/{id}', [LocalController::class, 'toggleAccept'])->middleware('auth', 'is_admin');
 Route::get('localNGOs/create', [LocalController::class, 'create'])->middleware('auth');
 Route::post('localNGOs', [LocalController::class, 'store']);
 Route::get('localNGOs/{local}', [LocalController::class, 'show']);
@@ -42,7 +43,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
-Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addremoveFav'])->middleware('auth');;
+Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addremoveFav'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

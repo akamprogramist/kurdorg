@@ -22,7 +22,7 @@ class LocalController extends Controller
         }
         return Inertia::render('locals/Index', [
             'filters' => Request::only(['search', 'location']),
-            'locals' => Local::latest()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+            'locals' => Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
             'favdata' => $favdata,
             'fav' => $fav,
         ]);
@@ -76,7 +76,8 @@ class LocalController extends Controller
                 'user_id' => $local->user_id,
                 'name' => $local->name,
                 'description' => $local->description,
-                'location' => $local->location
+                'location' => $local->location,
+                'status' => $local->status
             ]
         ]);
     }
@@ -85,6 +86,7 @@ class LocalController extends Controller
         $formFields = Request::validate([
             "name" => ['required'],
             'description' => ['required'],
+            'status' => ['required'],
             'location' => ['required'],
         ]);
 
@@ -104,8 +106,15 @@ class LocalController extends Controller
             ]);
         } else {
             return Inertia::render('locals/Manage', [
-                'locals' => Local::all()
+                'localsaccepted' => Local::latest()->accepted()->paginate(6),
+                'localspending' => Local::latest()->pending()->paginate(6),
             ]);
         }
+    }
+    public function toggleAccept($id)
+    {
+        Local::where('id', $id)
+            ->update(['status' => 'accepted']);
+        return back()->with('success', 'post updated');
     }
 }

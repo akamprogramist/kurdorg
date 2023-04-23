@@ -10,8 +10,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Local extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'location', 'image', 'user_id', 'count'];
+    protected $fillable = ['name', 'description', 'location', 'image', 'user_id', 'count', 'status'];
 
+    public function scopeAccepted($query)
+    {
+        $query->where('status', '=', 'accepted');
+    }
+    public function scopePending($query)
+    {
+        $query->where('status', '=', 'pending');
+    }
     // filter products
     public function scopeFilter($query, array $filters)
     {

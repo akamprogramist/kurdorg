@@ -7,6 +7,7 @@ const form = useForm({
     user_id: props.locals.user_id,
     description: props.locals.description,
     location: props.locals.location,
+    status: props.locals.status,
     image: props.locals.image,
 });
 function submit() {
@@ -65,6 +66,14 @@ function submit() {
                 </select>
                 <div v-if="form.errors.location" class="text-red-500">
                     {{ form.errors.location }}
+                </div>
+                <br />
+                <select v-model="form.status" name="status" id="status">
+                    <option value="pending">pending</option>
+                    <option value="accepted">accepted</option>
+                </select>
+                <div v-if="form.errors.status" class="text-red-500">
+                    {{ form.errors.status }}
                 </div>
                 <br />
 

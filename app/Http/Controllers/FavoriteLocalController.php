@@ -17,7 +17,6 @@ class FavoriteLocalController extends Controller
             Favorite::create([
                 'user_id' => auth()->id(),
                 'local_id' => $id
-
             ]);
         }
         return back()->with('success', 'Post Changed favorites!');

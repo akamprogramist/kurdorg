@@ -84,7 +84,7 @@ function addremoveFav(id) {
                 </div>
             </div>
             <div class="py-5 grid md:grid-cols-3 gap-6">
-                <div v-if="isFav" v-for="local in favdata" :key="local.id">
+                <div v-if="isFav" v-for="local in favdata.data" :key="local.id">
                     <div
                         class="rounded-lg border hover:shadow-3xl border-gray-10 duration-300"
                     >

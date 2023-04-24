@@ -20,12 +20,21 @@ class LocalController extends Controller
         if (auth()->check()) {
             $favdata = auth()->user()->favoriteby;
         }
-        return Inertia::render('locals/Index', [
-            'filters' => Request::only(['search', 'location']),
-            'locals' => Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
-            'favdata' => $favdata,
-            'fav' => $fav,
-        ]);
+
+        if (auth()->check()) {
+            return Inertia::render('locals/Index', [
+                'filters' => Request::only(['search', 'location']),
+                'locals' => Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+                'favdata' => $favdata->toQuery()->latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+                'fav' => $fav,
+            ]);
+        } else {
+            return Inertia::render('locals/Index', [
+                'filters' => Request::only(['search', 'location']),
+                'locals' => Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+                'fav' => $fav,
+            ]);
+        }
     }
 
     public function create()

@@ -16,10 +16,6 @@ class Local extends Model
     {
         $query->where('status', '=', 'accepted');
     }
-    public function scopePending($query)
-    {
-        $query->where('status', '=', 'pending');
-    }
     // filter products
     public function scopeFilter($query, array $filters)
     {

@@ -1,6 +1,8 @@
 <script setup>
-import { useForm, Link } from "@inertiajs/vue3";
+import { useForm, Link, usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
+const user = computed(() => usePage().props.auth.user);
 const props = defineProps({ locals: Object });
 const form = useForm({
     name: props.locals.name,
@@ -68,7 +70,12 @@ function submit() {
                     {{ form.errors.location }}
                 </div>
                 <br />
-                <select v-model="form.status" name="status" id="status">
+                <select
+                    v-if="user.role_id == 2"
+                    v-model="form.status"
+                    name="status"
+                    id="status"
+                >
                     <option value="pending">pending</option>
                     <option value="accepted">accepted</option>
                 </select>

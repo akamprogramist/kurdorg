@@ -99,10 +99,11 @@ class LocalController extends Controller
 
     public function manage()
     {
-        $locals = auth()->user()->locals;
-        if (auth()->user()->role_id === 1) {
+        $admin = auth()->user()->role_id === 1;
+        $user = auth()->user();
+        if ($admin) {
             return Inertia::render('locals/Manage', [
-                'locals' => $locals,
+                'localsaccepted' => Local::latest()->where('user_id', $user->id)->paginate(6),
             ]);
         } else {
             return Inertia::render('locals/Manage', [

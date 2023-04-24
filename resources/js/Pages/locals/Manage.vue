@@ -1,10 +1,12 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { router, Link } from "@inertiajs/vue3";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
 import Pagination from "../components/Pagination.vue";
 import Button from "../components/Button.vue";
 import Flash from "../components/Flash.vue";
+import { usePage } from "@inertiajs/vue3";
+const user = computed(() => usePage().props.auth.user);
 const props = defineProps({ localsaccepted: Object, localspending: Object });
 function destroy(id) {
     if (confirm("Are you sure you want to delete this local?")) {
@@ -26,9 +28,9 @@ function toggleAccept(id) {
             <p class="text-3xl text-slate-700 text-center font-bold">
                 LocalNGOs
             </p>
-            <Flash />
             <button
                 @click="togglelocals"
+                v-if="user.role_id == 2"
                 class="bg-bluesh text-white capitalize font-semibold py-2 px-5 rounded hover:opacity-80"
             >
                 <span v-if="locals">see accepted</span>
@@ -37,8 +39,8 @@ function toggleAccept(id) {
             <Link
                 href="/localNGOs/create"
                 class="bg-bluesh text-white font-semibold py-2 px-5 rounded hover:opacity-80"
-                >Create LocalNGO</Link
-            >
+                >Create LocalNGO
+            </Link>
         </div>
         <div class="bg-white rounded shadow overflow-x-auto">
             <table class="w-full whitespace-nowrap">
@@ -166,7 +168,7 @@ function toggleAccept(id) {
                 </tbody>
             </table>
         </div>
-
+        <Flash class="my-5" />
         <pagination class="mt-6" :links="localsaccepted.links" />
     </AdminLayout>
 </template>

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, watch, computed } from "vue";
 import { router, Link, usePage } from "@inertiajs/vue3";
-
 import Pagination from "../components/Pagination.vue";
 import Container from "../layout/Container.vue";
 import Layout from "../layout/Layout.vue";
@@ -85,7 +84,7 @@ function addremoveFav(id) {
                 </div>
             </div>
             <div class="py-5 grid md:grid-cols-3 gap-6">
-                <div v-if="isFav" v-for="local in favdata.data" :key="local.id">
+                <div v-if="isFav" v-for="local in favdata" :key="local.id">
                     <div
                         class="rounded-lg border hover:shadow-3xl border-gray-10 duration-300"
                     >

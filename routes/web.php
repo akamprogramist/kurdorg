@@ -45,10 +45,12 @@ Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('AdminPages/Dashboard');
-})->middleware('auth');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('AdminPages/Dashboard');
+// })->middleware('auth');
 
+// shorthand for the above code 
+Route::inertia('/dashboard', 'AdminPages/Dashboard')->middleware('auth');
 
 Route::get('/internationalNGOs', [InternationalController::class, 'Index']);
 Route::get('/opportunities', function () {

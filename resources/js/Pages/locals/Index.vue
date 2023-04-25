@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch, computed } from "vue";
-import { router, Link, usePage } from "@inertiajs/vue3";
+import { router, Link, usePage, Head } from "@inertiajs/vue3";
 import Pagination from "../components/Pagination.vue";
 import Container from "../layout/Container.vue";
 import Search from "../components/Search.vue";
@@ -50,6 +50,7 @@ function addremoveFav(id) {
 </script>
 
 <template>
+    <Head title="LocalNGOs" />
     <Container class="my-10 space-y-5">
         <p class="text-3xl text-slate-700 font-bold">Find Organizations</p>
         <div class="my-5 space-y-5">

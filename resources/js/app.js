@@ -7,6 +7,7 @@ import Layout from "./Pages/layout/Layout.vue";
 
 router.on("start", () => NProgress.start());
 createInertiaApp({
+    title: (title) => (title ? `${title} - My App` : "My App"),
     resolve: (name) => {
         const pages = import.meta.glob("./Pages/**/*.vue", { eager: true });
         let page = pages[`./Pages/${name}.vue`];

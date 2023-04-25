@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
-import { router, Link } from "@inertiajs/vue3";
+import { router, Link, Head } from "@inertiajs/vue3";
 import AdminLayout from "../layout/AdminLayout/AdminLayout.vue";
 import Pagination from "../components/Pagination.vue";
 import Button from "../components/Button.vue";
@@ -28,6 +28,7 @@ export default {
 };
 </script>
 <template>
+    <Head title="Manage" />
     <div class="flex justify-between items-center my-5 px-5">
         <p class="text-3xl text-slate-700 text-center font-bold">LocalNGOs</p>
         <button

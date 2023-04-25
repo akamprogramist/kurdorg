@@ -33,6 +33,7 @@ Route::get('localNGOs/{local}', [LocalController::class, 'show']);
 Route::get('localNGOs/{local}/edit', [LocalController::class, 'edit'])->middleware('auth');
 Route::post('localNGOs/{local}', [LocalController::class, 'update']);
 Route::delete('localNGOs/{local}', [LocalController::class, 'destroy'])->middleware('auth');
+Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addremoveFav'])->middleware('auth');
 
 
 Route::get('/register', [UserController::class, 'create']);
@@ -43,7 +44,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::delete('/users/{user}', [UserController::class, 'destroy']);
 Route::delete('/logout', [UserController::class, 'logout']);
 
-Route::post('/favorite/{id}', [FavoriteLocalController::class, 'addremoveFav'])->middleware('auth');
 
 Route::get('/dashboard', function () {
     return Inertia::render('AdminPages/Dashboard');

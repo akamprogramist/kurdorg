@@ -87,11 +87,14 @@ const user = computed(() => usePage().props.auth.user);
                 <li>
                     <Link
                         href="/dashboard"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
+                        class="flex items-center p-2 text-base font-normal text-gray-700 rounded-lg"
+                        :class="{
+                            'bg-bluesh text-white': $page.url === '/dashboard',
+                        }"
                     >
                         <svg
                             aria-hidden="true"
-                            class="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            class="w-6 h-6 transition duration-75"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -109,11 +112,15 @@ const user = computed(() => usePage().props.auth.user);
                 <li>
                     <Link
                         href="/localNGOs/manage"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
+                        class="flex items-center p-2 text-base font-normal text-gray-700 rounded-lg"
+                        :class="{
+                            'bg-bluesh text-white':
+                                $page.url === '/localNGOs/manage',
+                        }"
                     >
                         <svg
                             aria-hidden="true"
-                            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            class="flex-shrink-0 w-6 h-6 transition duration-75"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -130,11 +137,15 @@ const user = computed(() => usePage().props.auth.user);
                 <li>
                     <Link
                         href="/users/manage"
-                        class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
+                        class="flex items-center p-2 text-base font-normal text-gray-700 rounded-lg"
+                        :class="{
+                            'bg-bluesh text-white':
+                                $page.url === '/users/manage',
+                        }"
                     >
                         <svg
                             aria-hidden="true"
-                            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            class="flex-shrink-0 w-6 h-6 transition duration-75"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +166,7 @@ const user = computed(() => usePage().props.auth.user);
                     >
                         <svg
                             aria-hidden="true"
-                            class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            class="flex-shrink-0 w-6 h-6  transition duration-75 group-hover:text-gray-900"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"

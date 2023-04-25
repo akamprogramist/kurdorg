@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <Container class="bg-indigo-200">
             <div class="pt-20">
                 <p class="font-medium text-sm uppercase text-zinc-700 mb-1">
@@ -98,11 +97,10 @@
                 <Button class="bg-blue-600 hover:bg-blue-700">see more</Button>
             </div>
         </div>
-    </Layout>
+
 </template>
 
 <script setup>
 import Container from "./layout/Container.vue";
-import Layout from "./layout/Layout.vue";
 import Button from "./components/Button.vue";
 </script>

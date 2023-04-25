@@ -1,5 +1,4 @@
 <template>
-    <Layout>
         <div class="pb-10 bg-white px-6 md:px-36">
             <div class="text-center space-y-1 py-10 bg-white px-6 md:px-36">
                 <p class="font-semibold text-3xl">Latest News</p>
@@ -50,10 +49,9 @@
                 <Button class="bg-blue-600 hover:bg-blue-700">see more</Button>
             </div>
         </div>
-    </Layout>
+    
 </template>
 
 <script setup>
-import Layout from "./layout/Layout.vue";
 import Button from "./components/Button.vue";
 </script>

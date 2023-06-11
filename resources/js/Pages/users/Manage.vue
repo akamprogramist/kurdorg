@@ -63,7 +63,7 @@ export default {
                             class="flex items-center px-6 py-4"
                             :href="`/users/${user.id}/edit`"
                         >
-                            {{ user.id }}
+                            {{ user.role_id }}
                         </Link>
                     </td>
                     <td class="border-t">

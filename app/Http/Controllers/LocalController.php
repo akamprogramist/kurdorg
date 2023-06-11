@@ -22,7 +22,7 @@ class LocalController extends Controller
             $localsQuery = Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString();
 
             if ($favdata->isEmpty()) {
-                $favdataPagination = 'No posts found';
+                $favdataPagination = null;
             } else {
                 $favdataQuery = $favdata->toQuery()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString();
                 $favdataPagination = $favdataQuery->isEmpty() ? 'No posts found' : $favdataQuery;

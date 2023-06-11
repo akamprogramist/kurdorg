@@ -12,20 +12,26 @@ class LocalController extends Controller
     public function index()
     {
         $fav = [];
-        if (auth()->check()) {
-            // favoriteby return the collection and the pluck returns a new collection with only the id attribute
-            $fav = auth()->user()->favoriteby->pluck('id')->toArray();
-        }
         $favdata = [];
         if (auth()->check()) {
+            $fav = auth()->user()->favoriteby->pluck('id')->toArray();
             $favdata = auth()->user()->favoriteby;
         }
 
         if (auth()->check()) {
+            $localsQuery = Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString();
+
+            if ($favdata->isEmpty()) {
+                $favdataPagination = 'No posts found';
+            } else {
+                $favdataQuery = $favdata->toQuery()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString();
+                $favdataPagination = $favdataQuery->isEmpty() ? 'No posts found' : $favdataQuery;
+            }
+
             return Inertia::render('locals/Index', [
                 'filters' => Request::only(['search', 'location']),
-                'locals' => Local::latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
-                'favdata' => $favdata->toQuery()->latest()->accepted()->filter(Request::only('search', 'location'))->paginate(6)->withQueryString(),
+                'locals' => $localsQuery,
+                'favdata' => $favdataPagination,
                 'fav' => $fav,
             ]);
         } else {
